@@ -1,0 +1,5 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="progress_boarder_width">8dp</dimen>
+    <dimen name="progress_number_size">20sp</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/xiangcheng/Downloads/CircleProgressBar/app/build/intermediates/exploded-aar/CircleProgressBar/library/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="b255849c409955748bac27d8dfffe9e78bf3b77e">
+        <dex dex="/Users/xiangcheng/Downloads/CircleProgressBar/app/build/intermediates/pre-dexed/debug/classes-c578f5aab50d8c9ff3ed295baafd54b2f525e4d7.jar" />
+    </item>
+
+</items>

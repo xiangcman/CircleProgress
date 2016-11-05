@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgressBarView">
+        <attr name="number_progress" format="integer" />
+        <attr name="border_width" format="dimension" />
+        <attr name="unreached_color" format="color" />
+        <attr name="reached_color" format="color" />
+        <attr name="number_corlor" format="color" />
+        <attr name="number_size" format="dimension" />
+        <!--如果这里是true的话，外环就用颜色数组来绘制了-->
+        <attr name="isColorful" format="boolean" />
+    </declare-styleable>
+</resources>

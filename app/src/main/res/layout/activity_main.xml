@@ -1,0 +1,57 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.library.circleprogressbar.CircleProgressBarView
+            android:id="@+id/progress_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
+
+        <com.library.circleprogressbar.CircleProgressBarView
+            android:id="@+id/progress_view_colorful"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            custom:isColorful="true"
+            custom:number_size="@dimen/progress_number_size"/>
+
+        <com.library.circleprogressbar.CircleProgressBarView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            custom:number_corlor="#00cccc"
+            custom:number_progress="40" />
+
+        <com.library.circleprogressbar.CircleProgressBarView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            custom:border_width="@dimen/progress_boarder_width"
+            custom:number_corlor="#ff66cc"
+            custom:number_progress="60" />
+
+        <com.library.circleprogressbar.CircleProgressBarView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            custom:border_width="@dimen/progress_boarder_width"
+            custom:number_corlor="#88cccc"
+            custom:number_progress="80"
+            custom:reached_color="#FFDEAD" />
+    </LinearLayout>
+
+</ScrollView>
