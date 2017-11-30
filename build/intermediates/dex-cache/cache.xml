@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/xiangcheng/Downloads/CircleProgressBar/app/build/intermediates/exploded-aar/CircleProgressBar/library/unspecified/jars/classes.jar"
+        jar="/Users/xiangcheng/CircleProgress/app/build/intermediates/exploded-aar/CircleProgress/library/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.3"
-        sha1="b255849c409955748bac27d8dfffe9e78bf3b77e">
-        <dex dex="/Users/xiangcheng/Downloads/CircleProgressBar/app/build/intermediates/pre-dexed/debug/classes-c578f5aab50d8c9ff3ed295baafd54b2f525e4d7.jar" />
+        sha1="c00f819c5d5160068e9a0d831ad6ceddebd38ac3">
+        <dex dex="/Users/xiangcheng/CircleProgress/app/build/intermediates/pre-dexed/debug/classes-c4d1db823c870562dc5e832d8b330415d1b0a70e.jar" />
     </item>
 
 </items>

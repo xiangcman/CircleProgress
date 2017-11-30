@@ -9,6 +9,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
@@ -69,6 +71,10 @@ public class CircleProgressBarView extends View {
 
     private boolean hasDraw;
 
+    //是否是包裹性的绘制弧度
+    private boolean isFull;
+    private boolean isRound;
+
     public CircleProgressBarView(Context context) {
         this(context, null);
     }
@@ -88,6 +94,8 @@ public class CircleProgressBarView extends View {
         startNumScale = numberSize;
         endNumScale = Utils.sp2px(context, Utils.px2sp(context, startNumScale) + 2);
         isColorFul = typedArray.getBoolean(R.styleable.CircleProgressBarView_isColorful, false);
+        isFull = typedArray.getBoolean(R.styleable.CircleProgressBarView_isFull, false);
+        isRound = typedArray.getBoolean(R.styleable.CircleProgressBarView_isRound, false);
         progress = typedArray.getInt(R.styleable.CircleProgressBarView_number_progress, 0);
         if (unReachedColor == reachedColor) {
             throw new IllegalArgumentException("the unreadchColor is not different from reachedColor");
@@ -309,6 +317,9 @@ public class CircleProgressBarView extends View {
             arcRect.right = centerX + radius;
             arcRect.bottom = centerY + radius;
             hasDraw = true;
+            if (isRound) {
+                reachedPaint.setStrokeCap(Paint.Cap.ROUND);
+            }
             Log.d(TAG, "width:" + width);
             Log.d(TAG, "height:" + height);
         }
@@ -318,13 +329,26 @@ public class CircleProgressBarView extends View {
         canvas.drawCircle(centerX, centerY, radius, unReachedPaint);
         String str = String.valueOf(progress) + "%";
         float numWidth = numPaint.measureText(str);
+        if (!isFull) {
+            canvas.drawText(str, (float) (width * 1.0 / 2 - numWidth * 1.0 / 2), (float) (height * 1.0 / 2 + getTextHeight(str) * 1.0 / 2), numPaint);
+        }
+        int layer = 0;
 
-        canvas.drawText(str, (float) (width * 1.0 / 2 - numWidth * 1.0 / 2), (float) (height * 1.0 / 2 + getTextHeight(str) * 1.0 / 2), numPaint);
+        if (isFull) {
+            reachedPaint.setStyle(Paint.Style.FILL);
+            layer = canvas.saveLayer(0, 0, width, height, null, Canvas.ALL_SAVE_FLAG);
+            canvas.drawCircle(centerX, centerY, radius, unReachedPaint);
+            reachedPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
+        }
         if (!isColorFul) {
-            canvas.drawArc(arcRect, -90, (float) (progress * 360 / 100), false, reachedPaint);
+            canvas.drawArc(arcRect, -90, (float) (progress * 360 / 100), isFull, reachedPaint);
         } else {
             reachedPaint.setColor(reachedColor);
-            canvas.drawArc(arcRect, -90 + (float) (progress * 360 / 100), 90, false, reachedPaint);
+            canvas.drawArc(arcRect, -90 + (float) (progress * 360 / 100), 90, isFull, reachedPaint);
+        }
+        if (isFull) {
+            reachedPaint.setXfermode(null);
+            canvas.restoreToCount(layer);
         }
     }
 
@@ -383,7 +407,6 @@ public class CircleProgressBarView extends View {
     }
 
     private OnProgressChangeListener listener;
-
 
     public interface OnProgressChangeListener {
         void onChange(int progress);

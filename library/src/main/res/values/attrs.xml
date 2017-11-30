@@ -9,5 +9,8 @@
         <attr name="number_size" format="dimension" />
         <!--如果这里是true的话，外环就用颜色数组来绘制了-->
         <attr name="isColorful" format="boolean" />
+        <attr name="isFull" format="boolean" />
+        <attr name="isRound" format="boolean" />
+        <attr name="isWave" format="boolean" />
     </declare-styleable>
 </resources>
